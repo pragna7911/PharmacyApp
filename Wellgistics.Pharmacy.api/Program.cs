@@ -25,7 +25,12 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod()
             .AllowAnyHeader());
 });
-
+// Ensure the app listens on port 80 inside Docker
+builder.WebHost.ConfigureKestrel(options =>
+{
+    // Listen on all network interfaces for Docker (0.0.0.0)
+    options.ListenAnyIP(80);  // Or use any other port that is mapped in Docker
+});
 builder.Services.AddDbContext<PharmacyDbContext>(options =>
 {
     // DbContext configuration is now handled inside the RoleDbContext class (OnConfiguring)
