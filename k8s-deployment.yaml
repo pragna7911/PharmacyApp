@@ -14,10 +14,11 @@ spec:
         app: aspnetcore-api
     spec:
       containers:
-      - name: aspnetcore-api
-        image: pradeepv4b1/aspnetcore-api:${BUILD_NUMBER}
-        ports:
-        - containerPort: 80		
+        - name: aspnetcore-api
+          image: pradeepv4b1/aspnetcore-api:${BUILD_NUMBER}
+          ports:
+            - containerPort: 80
+
 ---
 apiVersion: v1
 kind: Service
@@ -31,6 +32,5 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
-	  nodePort: 32000
+      nodePort: 32000
   type: NodePort
-  
