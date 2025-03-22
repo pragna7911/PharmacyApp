@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aspnetcore-api
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: aspnetcore-api
+  template:
+    metadata:
+      labels:
+        app: aspnetcore-api
+    spec:
+      containers:
+      - name: aspnetcore-api
+        image: pradeepv4b1/aspnetcore-api:latest
+        ports:
+        - containerPort: 80
+		
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: aspnetcore-api-service
+  namespace: default
+spec:
+  selector:
+    app: aspnetcore-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+	  nodePort: 32000
+  type: NodePort
+  
