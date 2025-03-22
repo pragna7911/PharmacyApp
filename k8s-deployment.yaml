@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: aspnetcore-api
-        image: pradeepv4b1/aspnetcore-api:latest
+        image: pradeepv4b1/aspnetcore-api:${BUILD_NUMBER}
         ports:
         - containerPort: 80
 		
