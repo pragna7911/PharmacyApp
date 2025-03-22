@@ -17,10 +17,8 @@ spec:
       - name: aspnetcore-api
         image: pradeepv4b1/aspnetcore-api:${BUILD_NUMBER}
         ports:
-        - containerPort: 80
-		
+        - containerPort: 80		
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
